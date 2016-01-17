@@ -26,19 +26,19 @@ def execute_remote_command(command, hostname, username, password):
             client.close()
 
 src = 'src/lib'
-
+bundle_name = 'Etvnet.bundle'
 
 plex_home = dest_root(platform.system()) + "/Library/Application\ Support/Plex\ Media\ Server"
 plugins_dir = plex_home + '/Plug-ins'
-plugin_dir = plugins_dir + '/Etvnet.bundle'
+plugin_dir = plugins_dir + '/' + bundle_name
 
 unix_plex_home = dest_root('Unix') + "/Library/Application\ Support/Plex\ Media\ Server"
 unix_plugins_dir = unix_plex_home + '/Plug-ins'
-unix_plugin_dir = unix_plugins_dir + '/Etvnet.bundle'
+unix_plugin_dir = unix_plugins_dir + '/' + bundle_name
 
 username = 'alex'
 hostname = "10.0.1.37"
-archive = "Etvnet.bundle.zip"
+archive = bundle_name + '.zip'
 
 @task
 def test(script):
@@ -99,15 +99,15 @@ def reset_remote(password):
         sudo -S rm -rf {plex_home}/Plug-in\ Support/Caches/com.plexapp.plugins.etvnet
         sudo -S rm -rf {plex_home}/Plug-in\ Support/Data/com.plexapp.plugins.etvnet
         sudo -S rm -rf {plex_home}/Plug-in\ Support/Preferences/com.plexapp.plugins.etvnet.xml
-        sudo -S rm -rf {plex_home}/Plug-ins\Etvnet.bundle/Contents/Code
-        # sudo -S rm -rf {plex_home}/Plug-ins\Etvnet.bundle/Contents/Resources
-        # sudo -S rm -rf {plex_home}/Plug-ins\Etvnet.bundle/Contents/Services
-        # sudo -S rm -rf {plex_home}/Plug-ins\Etvnet.bundle/Contents/Strings
-        # sudo -S rm -f {plex_home}/Plug-ins\Etvnet.bundle/Contents/DefaultPrefs.json
-        # sudo -S rm -f {plex_home}/Plug-ins\Etvnet.bundle/Contents/Info.plist
+        sudo -S rm -rf {plex_home}/Plug-ins\{bundle_name}/Contents/Code
+        # sudo -S rm -rf {plex_home}/Plug-ins\{bundle_name}/Contents/Resources
+        # sudo -S rm -rf {plex_home}/Plug-ins\{bundle_name}/Contents/Services
+        # sudo -S rm -rf {plex_home}/Plug-ins\{bundle_name}/Contents/Strings
+        # sudo -S rm -f {plex_home}/Plug-ins\{bundle_name}/Contents/DefaultPrefs.json
+        # sudo -S rm -f {plex_home}/Plug-ins\{bundle_name}/Contents/Info.plist
 
         echo "Plugin was reset.".
-    """.format(plex_home=unix_plex_home, plugin_dir=unix_plugin_dir)
+    """.format(plex_home=unix_plex_home, plugin_dir=unix_plugin_dir, bundle_name=bundle_name)
 
     execute_remote_command(command, hostname, username, password)
 
@@ -121,7 +121,7 @@ def scp(archive):
 
 @task
 def unzip_remote(password):
-    command = "sudo -S unzip -o Etvnet.bundle.zip -d " + unix_plugins_dir
+    command = "sudo -S unzip -o " + bundle_name + ".zip -d " + unix_plugins_dir
 
     execute_remote_command(command, hostname, username, password)
 
@@ -153,9 +153,9 @@ def clean():
 def build():
     clean()
 
-    run("mkdir -p build/Etvnet.bundle")
+    run("mkdir -p build/" + bundle_name)
 
-    copy('build/Etvnet.bundle')
+    copy('build/' + bundle_name)
     zip(archive)
 
 @task
@@ -168,7 +168,7 @@ def rdeploy():
     #
     # execute_remote_command(command, hostname, username, password)
     #
-    # command = "sudo -S rm -f " + "~/Etvnet.bundle.zip"
+    # command = "sudo -S rm -f " + "~/" bundle_name + ".zip"
     #
     # execute_remote_command(command, hostname, username, password)
 
