@@ -1,0 +1,88 @@
+[
+    {
+        "id": "language",
+        "type": "enum",
+        "label": "Your Language",
+        "default": "Russian/ru",
+        "values": [
+            "English/en",
+            "Russian/ru"
+        ]
+    },
+    {
+        "id": "time_shift",
+        "type": "enum",
+        "label": "Live Streaming City",
+        "default": "New York/3",
+        "values": [
+            "Moscow/0",
+            "Berlin/1",
+            "London/2",
+            "New York/3",
+            "Chicago/4",
+            "Denver/5",
+            "Los Angeles/6"
+        ]
+    },
+     {
+        "id": "other_server",
+        "type": "enum",
+        "label": "Streaming from another server",
+        "default": "Yes",
+        "values": [
+            "Yes",
+            "No"
+        ]
+    },
+    {
+        "id": "elements_per_page",
+        "type": "enum",
+        "label": "Items per page",
+        "default": "25",
+        "values": [
+            "10",
+            "15",
+            "20",
+            "25",
+            "30",
+            "35",
+            "40",
+            "45",
+            "50",
+            "55",
+            "60",
+            "65",
+            "70",
+            "75",
+            "80",
+            "85",
+            "90",
+            "95",
+            "100"
+        ]
+    },
+    {
+        "id": "format",
+        "type": "enum",
+        "label": "Media Format",
+        "default": "MP4",
+        "values": [
+            "All Formats",
+            "MP4",
+            "WMV"
+        ]
+    },
+    {
+        "id": "quality_level",
+        "type": "enum",
+        "label": "Quality Level",
+        "default": "High",
+        "values": [
+            "All Levels",
+            "Best",
+            "High",
+            "Medium",
+            "Low"
+        ]
+    }
+]

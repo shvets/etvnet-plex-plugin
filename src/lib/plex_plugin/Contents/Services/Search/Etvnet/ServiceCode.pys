@@ -1,0 +1,12 @@
+
+
+def Search(query=None, per_page=None, page=1, **params):
+    oc = ObjectContainer()
+
+    oc.add(VideoClipObject(
+            url='url',
+            title='title',
+            summary='summary',
+            thumb='http://static.etvnet.com/shared/image/media/385153/bunker-news.120x180.jpg'
+    ))
+

@@ -1,0 +1,113 @@
+{
+  // top
+  "Live": "Прямой эфир",
+  "Archive": "Архив",
+  "New Arrivals": "Новое",
+  "Topics": "Темы",
+  "Bookmarks": "Очередь",
+  "History": "История",
+  "Radio": "Радио",
+  "Music": "Музыка",
+  "System": "Система",
+
+  // live
+  "All Channels": "Все каналы",
+  "Favorite": "Любимые",
+  "Schedule": "Расписание",
+  "Add Favorite": "Добавить Канал",
+  "Remove Favorite": "Удалить Канал",
+  "Favorite Added": "Канал Добавлен.",
+  "Favorite Removed": "Канал Удален.",
+
+  // archive
+  "Channels": "Каналы",
+  "Add Bookmark": "Добавить в очередь",
+  "Remove Bookmark": "Удалить из очереди",
+  "Bookmark Added": "Элемент добавлен.",
+  "Bookmark Removed": "Элемент удален.",
+  "Sort Items": "Сортировать",
+  "Movies Search": "Поиск по Фильмам",
+
+  // system
+  "Reset Token": "Сбросить Токен",
+  "Authorize": "Авторизация",
+  "Complete authorization": "Завершить авторизацию",
+  "Service temporarily unavailable": "Сервис временно недоступен",
+  "enterCodeSite": "Пожалуйста, введите код \"%s\" на сайте %s",
+  "codeIs": "Код: %s",
+  "You must enter code for continue": "Вы должны ввести код для продолжения",
+  "Error": "Ошибка",
+
+  // topics
+  "etvslider/main": "Выбор редакции",
+  "newmedias": "Стоит посмотреть",
+  "best": "Лучшая 100",
+  "top": "Лучшее за 7 дней",
+  "newest": "Последние поступления",
+  "now_watched": "Сейчас смотрят",
+  "recommend": "Персональные рекомендации",
+
+  // music
+  "Collections": "Коллекции",
+  "Artists": "Музыканты",
+  "Genres": "Жанры",
+  "Albums": "Альбомы",
+  "All Albums": "Все Альбомы",
+  "Favorite Albums": "Любимые Альбомы",
+  "Favorite Double Albums": "Любимые Двойные Альбомы",
+  "All Collections": "Все Коллекции",
+  "Favorite Collections": "Любимые Коллекции",
+  "All Artists": "Все Музыканты",
+  "Favorite Artists": "Любимые Музыканты",
+  "Artist": "Музыкант",
+  "All Genres": "Все Жанры",
+  "Favorite Genres": "Любимые Жанры",
+  "Audio Tracks": "Песни",
+  "Search Music": "Поиск по Музыке",
+  "Search Albums": "Поиск по Альбомам",
+  "Search Collections": "Поиск по Коллекциям",
+  "Search Artists": "Поиск по Музыкантам",
+  "Letter": "Буква",
+  "By Letter": "Русские Буквы",
+  "By Latin Letter": "Латинские Буквы",
+  "Now": "Сейчас",
+
+  "Queue": "Очередь",
+  "Add to Queue": "Добавить в очередь",
+  "Remove from Queue": "Удалить из очереди",
+  "Media Added": "Элемент добавлен.",
+  "Media Removed": "Элемент удален.",
+
+  // preferences
+  "Your Language": "Ваш язык: ",
+  "English/en": "Английский/en",
+  "Russian/ru": "Русский/ru",
+
+  "Streaming from another server": "Вещание с дополнительного сервера: ",
+  "Yes": "Да",
+  "No": "Нет",
+
+  "Live Streaming City" : "Город Прямого Вещания: ",
+  "Moscow": "Москва",
+  "Berlin": "Берлин",
+  "London": "Лондон",
+  "New York": "Нью-Йорк",
+  "Chicago": "Чикаго",
+  "Denver": "Денвер",
+  "Los Angeles": "Лос-Анджелес",
+
+  "Items per page": "Элементов на странице: ",
+
+  "Media Format": "Формат: ",
+  "All Formats": "Все Форматы",
+
+  "Quality Level": "Качество воспроизведения: ",
+  "All Levels": "Все Уровни",
+  "Best": "Лучшее",
+  "High": "Высокое",
+  "Medium": "Среднее",
+  "Low": "Низкое",
+
+  "Start Music Year": "Начальный Музыкальный Год: ",
+  "End Music Year": "Конечный Музыкальный Год: "
+}
