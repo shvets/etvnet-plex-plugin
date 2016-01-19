@@ -47,37 +47,6 @@
   "now_watched": "Сейчас смотрят",
   "recommend": "Персональные рекомендации",
 
-  // music
-  "Collections": "Коллекции",
-  "Artists": "Музыканты",
-  "Genres": "Жанры",
-  "Albums": "Альбомы",
-  "All Albums": "Все Альбомы",
-  "Favorite Albums": "Любимые Альбомы",
-  "Favorite Double Albums": "Любимые Двойные Альбомы",
-  "All Collections": "Все Коллекции",
-  "Favorite Collections": "Любимые Коллекции",
-  "All Artists": "Все Музыканты",
-  "Favorite Artists": "Любимые Музыканты",
-  "Artist": "Музыкант",
-  "All Genres": "Все Жанры",
-  "Favorite Genres": "Любимые Жанры",
-  "Audio Tracks": "Песни",
-  "Search Music": "Поиск по Музыке",
-  "Search Albums": "Поиск по Альбомам",
-  "Search Collections": "Поиск по Коллекциям",
-  "Search Artists": "Поиск по Музыкантам",
-  "Letter": "Буква",
-  "By Letter": "Русские Буквы",
-  "By Latin Letter": "Латинские Буквы",
-  "Now": "Сейчас",
-
-  "Queue": "Очередь",
-  "Add to Queue": "Добавить в очередь",
-  "Remove from Queue": "Удалить из очереди",
-  "Media Added": "Элемент добавлен.",
-  "Media Removed": "Элемент удален.",
-
   // preferences
   "Your Language": "Ваш язык: ",
   "English/en": "Английский/en",
@@ -106,8 +75,5 @@
   "Best": "Лучшее",
   "High": "Высокое",
   "Medium": "Среднее",
-  "Low": "Низкое",
-
-  "Start Music Year": "Начальный Музыкальный Год: ",
-  "End Music Year": "Конечный Музыкальный Год: "
+  "Low": "Низкое"
 }

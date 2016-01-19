@@ -205,8 +205,6 @@ def HandleChildren(id, name, thumb, in_queue=False, page=1, dir='desc'):
     def _():
         oc = ObjectContainer(title2=unicode(name))
 
-        #queue.append_controls(oc, type='Container', id=id, name=name, thumb=thumb)
-
         response = video_service.get_children(int(id), per_page=common.get_elements_per_page(), page=page, dir=dir)
 
         for media in HandleMediaList(response['data']['children'], in_queue=in_queue):
@@ -229,9 +227,6 @@ def HandleChild(id, name, thumb, rating_key, description, duration, year, on_air
     oc.add(MetadataObjectForURL(id, 'movie', name, thumb, rating_key, description, duration, year, on_air, index, files, container))
 
     if str(container) == 'False':
-        # queue.append_controls(oc, type='MediaObject', id=id, name=name, thumb=thumb, rating_key=rating_key,
-        #     description=description, duration=duration, year=year, on_air=on_air, files=files)
-
         bookmarks.append_controls(oc, id=id, name=name, thumb=thumb, rating_key=rating_key,
             description=description, duration=duration, year=year, on_air=on_air, files=files, container=container)
 

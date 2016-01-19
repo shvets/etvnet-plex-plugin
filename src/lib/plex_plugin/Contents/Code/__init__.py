@@ -79,7 +79,6 @@ def MainMenu(complete=False, offline=False):
     oc.add(DirectoryObject(key=Callback(archive.GetNewArrivals), title=unicode(L('New Arrivals'))))
     oc.add(DirectoryObject(key=Callback(archive.GetTopicsMenu), title=unicode(L('Topics'))))
     oc.add(DirectoryObject(key=Callback(bookmarks.GetBookmarks), title=unicode(L('Bookmarks'))))
-    # oc.add(DirectoryObject(key=Callback(music.GetMusicMenu), title=unicode(L('Music'))))
     oc.add(DirectoryObject(key=Callback(radio.GetRadioMenu), title=unicode(L('Radio'))))
     oc.add(DirectoryObject(key=Callback(GetSystemMenu), title=unicode(L('System'))))
 

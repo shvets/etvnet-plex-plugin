@@ -14,8 +14,6 @@ def GetLiveChannelsMenu():
         oc.add(DirectoryObject(key=Callback(GetLiveChannels, title=L('All Channels')),title=unicode(L('All Channels'))))
         oc.add(DirectoryObject(key=Callback(GetLiveChannels, title=L('Favorite'), favorite_only=True), title=unicode(L('Favorite'))))
 
-        # oc.add(DirectoryObject(key=Callback(GetLiveGenres, title=L('Genres')), title=unicode(L('Genres'))))
-
         result = video_service.get_live_categories()
 
         for genre in result['data']:

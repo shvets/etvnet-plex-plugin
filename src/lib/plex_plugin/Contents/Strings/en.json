@@ -47,37 +47,6 @@
   "now_watched": "Now watched",
   "recommend": "Personal Recommendations",
 
-  // music
-  "Collections": "Collections",
-  "Artists": "Artists",
-  "Genres": "Genres",
-  "Albums": "Albums",
-  "All Albums": "All Albums",
-  "Favorite Albums": "Favorite Albums",
-  "Favorite Double Albums": "Favorite Double Albums",
-  "All Collections": "All Collections",
-  "Favorite Collections": "Favorite Collections",
-  "All Artists": "All Artists",
-  "Favorite Artists": "Favorite Artists",
-  "Artist": "Artist",
-  "All Genres": "All Genres",
-  "Favorite Genres": "Favorite Genres",
-  "Audio Tracks": "Audio Tracks",
-  "Search Music": "Search Music",
-  "Search Albums": "Search Albums",
-  "Search Collections": "Search Collections",
-  "Search Artists": "Search Artists",
-  "Letter": "Letter",
-  "By Letter": "By Letter",
-  "By Latin Letter": "By Latin Letter",
-  "Now": "Now",
-
-  "Queue": "Queue",
-  "Add to Queue": "Add to queue",
-  "Remove from Queue": "Remove from queue",
-  "Media Added": "This media was added.",
-  "Media Removed": "This media was removed.",
-
   // preferences
   "Your Language": "Your Language: ",
   "English/en": "English/en",
@@ -106,8 +75,5 @@
   "Best": "Best",
   "High": "High",
   "Medium": "Medium",
-  "Low": "Low",
-
-  "Start Music Year": "Start Music Year: ",
-  "End Music Year": "End Music Year: "
+  "Low": "Low"
 }
