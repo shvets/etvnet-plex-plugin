@@ -50,7 +50,7 @@ class SshClient:
 
 if __name__ == "__main__":
     username = 'alex'
-    host = '10.0.1.35'
+    host = '10.0.1.37'
 
     password = getpass.getpass('Password for %s@%s: ' % (username, host))
 

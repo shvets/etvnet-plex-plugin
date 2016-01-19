@@ -1,71 +1,64 @@
-# Links
+# Plex Plugin for watching library of russian movies online
 
-https://github.com/ReallyFuzzy/IceFilms.bundle
-https://github.com/ReallyFuzzy/LetMeWatchThis.bundle
-https://github.com/ReallyFuzzy/ITV-Player.bundle.git
-https://github.com/kolsys/YouTubeTV.bundle
-https://github.com/TroRg/plex.kino.pub
-http://thingsinjars.com/post/297/writing-a-plex-plugin-part-i/
-https://github.com/plex-unofficial/KartinaTV.bundle/blob/master/Contents/Code/__init__.py
-https://github.com/plexinc-plugins/Services.bundle/blob/master/Contents/Service%20Sets/com.plexapp.plugins.cbcnewsnetwork/URL/CBC/ServiceCode.pys
-https://github.com/meriko/NBCSportsLiveExtra.bundle
+# Requirements
 
-https://support.plex.tv/hc/en-us/articles/201382123
-https://support.plex.tv/hc/en-us/articles/201169747-A-Beginner-s-Guide-to-v2-1
-https://github.com/plex-unofficial/ETVnet.bundle
+- Python 2.7.x
+- OSX or Ubuntu
 
-https://github.com/serge-v/ctv
+# Installing core tools
 
-# Install
+- Install Python (OSX):
 
+```bash
 xcode-select --install
 
 brew install pyenv
 
-pyenv install 3.5.1
 pyenv install 2.7.10
 pyenv rehash
 
 pyenv local 2.7.10
-pyenv global 3.5.1
 
 python --version
+```
 
+- Install pip and invoke:
+
+```bash
 easy_install pip
 pip install invoke
-pip install paramiko
+```
 
-pip install lxml
-pip install requests
+# Building and installing plugin
 
-# Linux on flash
+- build plugin:
 
-1.
+```bash
+invoke build
+```
 
-hdiutil convert -format UDRW -o ~/Downloads/ubuntu-15.10-desktop-amd64 ~/Downloads/ubuntu-15.10-desktop-amd64.iso
+After this command folder 'build' will contains 'Etvnet.bundle.zip' archive.
 
-2.
+You need to extract this archive into the following folder:
 
-diskutil list
+- on OSX: ~/Library/Application\ Support/Plex\ Media\ Server
 
-# /dev/disk3
+- on Ubuntu: /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server
 
-3.
+See how to manually install a channel [here] [manually-install-a-channel]
 
-diskutil eject /dev/disk3
-diskutil unmountDisk /dev/disk3
+You can build and deploy on OSX with this command:
 
-4.
+```bash
+invoke deploy
+```
 
-sudo dd if=/Users/ashvets/Downloads/ubuntu-15.10-desktop-amd64.dmg of=/dev/rdisk3 bs=1m
+It also restarts plex server and displays log file.
 
+# Install plugin on remote Ubuntu machine:
 
-# Ubuntu
+```bash
+env USERNAME=user HOSTNAME=remote_host invoke rdeploy
+```
 
-/Users/cheeta/Library/Application Support/Plex Media Server/Plug-ins/Etvnet.bundle
-
-tail -f /var/lib/plexmediaserver//Library/Application\ Support/Plex\ Media\ Server/Logs/PMS\ Plugin\ Logs/com.plexapp.plugins.etvnet.log
-tail -f /var/lib/plexmediaserver//Library/Application\ Support/Plex\ Media\ Server/Logs/Plex\ Media\ Server.log
-
-tail -f ~/Library/Logs/PMS Plugin Logs/com.plexapp.plugins.etvnet.log
-tail -f ~/Library/Logs/Plex\ Media\ Server.log
+[manually-install-a-channel]: https://support.plex.tv/hc/en-us/articles/201187656-How-do-I-manually-install-a-channel-

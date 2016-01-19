@@ -2,6 +2,21 @@ from invoke import run, task
 import platform
 import getpass
 import ssh_client
+import os
+
+if 'USERNAME' in os.environ:
+    username = os.environ['USERNAME']
+else:
+    username = 'alex'
+
+if 'HOSTNAME' in os.environ:
+    hostname = os.environ['HOSTNAME']
+else:
+    hostname = '10.0.1.37'
+
+src = 'src/lib'
+bundle_name = 'Etvnet.bundle'
+archive = bundle_name + '.zip'
 
 def dest_root(os):
     if os == 'Darwin':
@@ -25,9 +40,6 @@ def execute_remote_command(command, hostname, username, password):
         if client:
             client.close()
 
-src = 'src/lib'
-bundle_name = 'Etvnet.bundle'
-
 plex_home = dest_root(platform.system()) + "/Library/Application\ Support/Plex\ Media\ Server"
 plugins_dir = plex_home + '/Plug-ins'
 plugin_dir = plugins_dir + '/' + bundle_name
@@ -35,10 +47,6 @@ plugin_dir = plugins_dir + '/' + bundle_name
 unix_plex_home = dest_root('Unix') + "/Library/Application\ Support/Plex\ Media\ Server"
 unix_plugins_dir = unix_plex_home + '/Plug-ins'
 unix_plugin_dir = unix_plugins_dir + '/' + bundle_name
-
-username = 'alex'
-hostname = "10.0.1.37"
-archive = bundle_name + '.zip'
 
 @task
 def test(script):
