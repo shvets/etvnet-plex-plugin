@@ -60,5 +60,23 @@ It also restarts plex server and displays log file.
 ```bash
 env USERNAME=user HOSTNAME=remote_host invoke rdeploy
 ```
+# Articles
 
+
+* [A Beginner's Guide to v2.1] [beginner-guide]
+* [Channels from Other Sources] [channels-from-other-sources]
+* [The Power of the URL Service] [url-service]
+* [How do I manually install a channel?] [manually-install-a-channel]
+* [Plex Channels Forum] [plex-channels-forum]
+* [Plex Channels Dev Forum] [plex-channels-dev-forum]
+* [Services] [plex-services]
+* [Plex Plugin Development Walkthrough] [plex-walkthrough]
+
+[beginner-guide]: https://support.plex.tv/hc/en-us/articles/201169747
+[channels-from-other-sources]: https://support.plex.tv/hc/en-us/articles/201375863-Channels-from-Other-Sources
+[url-service]: https://support.plex.tv/hc/en-us/articles/201382123-The-Power-of-the-URL-Service
 [manually-install-a-channel]: https://support.plex.tv/hc/en-us/articles/201187656-How-do-I-manually-install-a-channel-
+[plex-channels-forum]: https://forums.plex.tv/categories/plex-channels
+[plex-channels-dev-forum]: https://forums.plex.tv/categories/channel-development
+[plex-services]: https://github.com/plexinc-plugins/Services.bundle
+[plex-walkthrough]: https://forums.plex.tv/discussion/28084/plex-plugin-development-walkthrough
