@@ -131,7 +131,7 @@ class EtvnetService(ApiService):
         if quality_level == None:
             return bitrates
         else:
-            # Best, High, Medium, Low, Undefined, Undefined
+            # Best, High, Medium, Low, Undefined
             filter_map = {
                 1: [0, 0, 0, 0],
                 2: [1, 0, 0, 0],
@@ -294,9 +294,6 @@ class EtvnetService(ApiService):
             params = {"per_page": per_page, "page": page}
 
             path = 'video/bookmarks/items.json'
-
-        # self._last_url_requested = path
-        # self._current_page = 1
 
         return self.full_request(self.build_url(path, **params))
 

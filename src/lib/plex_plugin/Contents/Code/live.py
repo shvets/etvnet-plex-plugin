@@ -198,7 +198,10 @@ def get_moscow_time():
 
     return time + datetime.timedelta(hours=3)
 
-#RAW_HLS_CLIENTS = ['Android', 'iOS', 'Roku', 'Safari']
+#URLService.MetadataObjectForURL(channel.live_url())
+
+RAW_HLS_CLIENTS = ['Android', 'iOS', 'Roku', 'Safari', 'tvOS']
+
 # if Client.Platform in RAW_HLS_CLIENTS:
 #if Client.Product in ['Plex Web', 'Plex for Xbox One'] and not Client.Platform == 'Safari':
 #    Log(Client.Platform)
@@ -208,6 +211,7 @@ def get_moscow_time():
 # Plex for Apple TV
 #'iOS' 'tvOS'
 
+@deferred
 def MediaObjectsForURL(channel_id, format, offset, bitrates):
     media_objects = []
 
@@ -249,6 +253,7 @@ def MediaObjectsForURL(channel_id, format, offset, bitrates):
         elif Client.Platform in ['iOS', 'Safari', 'tvOS']:
             media_object = MediaObject(
                 video_resolution = 720,
+                video_frame_rate = 50,
                 audio_channels = 2,
                 optimized_for_streaming = True
             )

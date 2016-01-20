@@ -27,10 +27,10 @@ import radio
 def Start(): # Initialize the plug-in
     #Plugin.AddPrefixHandler("/video/etvnet", MainMenu, 'Etvnet', ICON, ART)
 
-    # Plugin.AddViewGroup("InfoList", viewMode="InfoList", mediaType="items")
-    # Plugin.AddViewGroup("List", viewMode="List", mediaType="items")
-    # Plugin.AddViewGroup('PanelStream', viewMode='PanelStream', mediaType='items')
-    # Plugin.AddViewGroup('MediaPreview', viewMode='MediaPreview', mediaType='items')
+    Plugin.AddViewGroup("InfoList", viewMode="InfoList", mediaType="items")
+    Plugin.AddViewGroup("List", viewMode="List", mediaType="items")
+    Plugin.AddViewGroup('PanelStream', viewMode='PanelStream', mediaType='items')
+    Plugin.AddViewGroup('MediaPreview', viewMode='MediaPreview', mediaType='items')
 
     #ObjectContainer.title1 = 'Etvnet'
     # ObjectContainer.view_group = 'List'
