@@ -9,6 +9,7 @@ import urllib
 def GetArchiveMenu():
     def _():
         oc = ObjectContainer(title2=unicode(L('Archive')))
+        #, replace_parent=False))
 
         oc.add(DirectoryObject(key=Callback(GetChannels), title=unicode(L('Channels'))))
 

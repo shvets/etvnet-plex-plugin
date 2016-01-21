@@ -60,8 +60,51 @@ It also restarts plex server and displays log file.
 ```bash
 env USERNAME=user HOSTNAME=remote_host invoke rdeploy
 ```
-# Articles
 
+# How to fix live streaming on iOS and tvOS
+
+Files location:
+
+/Applications/Plex Media Server.app/Contents/Resources/Profiles/iOS.xml
+/Applications/Plex Media Server.app/Contents/Resources/Profiles/tvOS.xml
+
+/usr/lib/plexmediaserver/Resources/Profiles/iOS.xml
+/usr/lib/plexmediaserver/Resources/Profiles/tvOS.xml
+
+..\Program Files (x86)\Plex Media Server\Resources\Profiles\iOS.xml
+
+- comment hls profile from TranscodeTargets section
+- add new section to DirectPlayProfiles section:
+- restart PMS
+
+<VideoProfile protocol="hls" container="mpegts" codec="h264" audioCodec="aac,mp3" context="streaming" />
+
+# Logs
+
+- Linux:
+
+/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Logs/PMS\ Plugin\ Logs/com.plexapp.plugins.etvnet.log
+/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Logs/Plex\ Media\ Server.log
+
+OSX:
+~/Library/Logs/PMS\ Plugin\ Logs/com.plexapp.plugins.etvnet.log
+~/Library/Logs/Plex\ Media\ Server.log
+
+# Plugin Location
+
+- Linux:
+/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Plug-ins/Etvnet.bundle/
+
+- OSX:
+~/Library/Application\ Support/Plex\ Media\ Server/Plug-ins/Etvnet.bundle/
+
+# Inspired Projects
+
+* Alternative YouTube plugin - https://github.com/kolsys/YouTubeTV.bundle
+
+* ETVNET on XBMC - http://etvnet.com/xbmc
+
+# Articles
 
 * [A Beginner's Guide to v2.1] [beginner-guide]
 * [Channels from Other Sources] [channels-from-other-sources]
