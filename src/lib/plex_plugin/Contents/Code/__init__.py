@@ -1,6 +1,6 @@
 import common
 from plex_video_service import PlexVideoService
-from plex_radio_service import PlexRadioService
+from radio_service import RadioService
 
 ART = 'art-default.jpg'
 ICON = 'icon-default.png'
@@ -11,13 +11,8 @@ BACK_ICON = 'icon-back.png'
 ADD_ICON = 'icon-add.png'
 REMOVE_ICON = 'icon-remove.png'
 
-def on_error(e):
-    Log(e)
-
-    return ObjectContainer(header='Results', message=unicode(e))
-
-video_service = PlexVideoService(on_error)
-radio_service = PlexRadioService(on_error)
+video_service = PlexVideoService()
+radio_service = RadioService()
 
 import live
 import archive
@@ -25,8 +20,6 @@ import bookmarks
 import radio
 
 def Start(): # Initialize the plug-in
-    #Plugin.AddPrefixHandler("/video/etvnet", MainMenu, 'Etvnet', ICON, ART)
-
     Plugin.AddViewGroup("InfoList", viewMode="InfoList", mediaType="items")
     Plugin.AddViewGroup("List", viewMode="List", mediaType="items")
     Plugin.AddViewGroup('PanelStream', viewMode='PanelStream', mediaType='items')

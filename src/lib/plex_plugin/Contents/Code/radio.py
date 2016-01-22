@@ -17,26 +17,23 @@ def GetRadioMenu():
 
 @route('/video/etvnet/radio')
 def HandleRadio(id):
-    def _():
-        response = radio_service.get_station(id=id)
+    response = radio_service.get_station(id=id)
 
-        title = response['station_title']
+    title = response['station_title']
 
-        oc = ObjectContainer(title2=unicode(L(title)))
+    oc = ObjectContainer(title2=unicode(L(title)))
 
-        track_title = response['track_title']
+    track_title = response['track_title']
 
-        bitrates = {"m4a": [64], 'mp3': [128]}
+    bitrates = {"m4a": [64], 'mp3': [128]}
 
-        format = 'mp3'
+    format = 'mp3'
 
-        url = response['player_data'][format]
+    url = response['player_data'][format]
 
-        oc.add(GetTrack(id='id', title=title, track_title=track_title, format=format, bitrates=bitrates[format], url=url))
+    oc.add(GetTrack(id='id', title=title, track_title=track_title, format=format, bitrates=bitrates[format], url=url))
 
-        return oc
-
-    return radio_service.error_handler.handle_exception(_)
+    return oc
 
 @route('/video/etvnet/track')
 def GetTrack(id, title, track_title, format, bitrates, url, container=False):
