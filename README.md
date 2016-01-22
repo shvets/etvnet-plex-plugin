@@ -1,4 +1,4 @@
-# Plex Plugin for watching library of russian movies online
+# Plex Plugin for watching russian movies online from Etvnet media library
 
 # Requirements
 
@@ -31,21 +31,33 @@ pip install invoke
 
 # Building and installing plugin
 
+Plex Media Server (PMS) is located in (<plex_home>):
+
+- Ubuntu: /var/lib/plexmediaserver
+- OSX: /Applications/Plex\ Media\ Server.app
+
+Plugins for PMS are located here (<plugins_home>):
+
+- Ubuntu: /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Plug-ins
+- OSX:  ~/Library/Application\ Support/Plex\ Media\ Server/Plug-ins
+
 - build plugin:
 
 ```bash
 invoke build
 ```
 
-After this command folder 'build' will contains 'Etvnet.bundle.zip' archive.
+After this command folder 'build' will have 'Etvnet.bundle.zip' archive.
 
-You need to extract this archive into the following folder:
-
-- on OSX: ~/Library/Application\ Support/Plex\ Media\ Server
-
-- on Ubuntu: /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server
+You need to extract this archive into the <plugins_home>:
 
 See how to manually install a channel [here] [manually-install-a-channel]
+
+On Ubuntu, because of plugins folder location, you have to change the directory owner (plex):
+
+```bash
+sudo -S chown -R plex /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Plug-ins/Etvnet.plugin
+```
 
 You can build and deploy on OSX with this command:
 
@@ -61,27 +73,67 @@ It also restarts plex server and displays log file.
 env USERNAME=user HOSTNAME=remote_host invoke rdeploy
 ```
 
-# How to fix live streaming on iOS and tvOS
+# How to fix live streaming on tvOS
 
 Files location:
 
-/Applications/Plex Media Server.app/Contents/Resources/Profiles/iOS.xml
-/Applications/Plex Media Server.app/Contents/Resources/Profiles/tvOS.xml
+* /Applications/Plex Media Server.app/Contents/Resources/Profiles/tvOS.xml
+* /usr/lib/plexmediaserver/Resources/Profiles/tvOS.xml
+* ..\Program Files (x86)\Plex Media Server\Resources\Profiles\tvOS.xml
 
-/usr/lib/plexmediaserver/Resources/Profiles/iOS.xml
-/usr/lib/plexmediaserver/Resources/Profiles/tvOS.xml
+- replace content:
 
-..\Program Files (x86)\Plex Media Server\Resources\Profiles\iOS.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<Client name="tvOS">
+  <!-- Author: Plex Inc. -->
+  <!-- This profile is used by A8-based tvOS devices -->
+  <Settings>
+    <Setting name="DirectPlayStreamSelection" value="true" />
+    <Setting name="StreamUnselectedIncompatibleAudioStreams" value="true" />
+  </Settings>
+  <TranscodeTargets>
+    <VideoProfile protocol="hls" container="mpegts" codec="h264" audioCodec="aac,ac3,mp3" context="streaming">
+      <Setting name="VideoEncodeFlags" value="-x264opts bframes=3:cabac=1" />
+    </VideoProfile>
+    <MusicProfile container="mp3" codec="mp3" />
+    <PhotoProfile container="jpeg" />
+    <SubtitleProfile protocol="hls" container="webvtt" subtitleCodec="webvtt"/>
+  </TranscodeTargets>
+  <DirectPlayProfiles>
+    <VideoProfile container="mp4" codec="h264,mpeg4" audioCodec="aac,ac3,eac3" subtitleCodec="ttxt,tx3g,mov_text" />
+    <!-- Since tvOS may have issues direct playing mov/*/eac3 it has its own profile  -->
+    <VideoProfile container="mov" codec="h264,mpeg4" audioCodec="aac,ac3" subtitleCodec="ttxt,tx3g,mov_text" />
+    <!-- Allow Direct Play of HLS content  -->
+    <VideoProfile protocol="hls" container="mpegts" codec="h264" audioCodec="aac" />
+    <MusicProfile container="mp3" codec="mp3" />
+    <MusicProfile container="mp4" codec="aac" />
+    <PhotoProfile container="jpeg" />
+  </DirectPlayProfiles>
+  <CodecProfiles>
+    <VideoCodec name="h264">
+      <Limitations>
+        <UpperBound name="video.width" value="1920" />
+        <UpperBound name="video.height" value="1080" />
+        <UpperBound name="video.bitDepth" value="8" isRequired="false" />
+      </Limitations>
+    </VideoCodec>
+    <VideoAudioCodec name="aac">
+      <Limitations>
+        <UpperBound name="audio.channels" value="2" />
+      </Limitations>
+    </VideoAudioCodec>
+  </CodecProfiles>
+</Client>
+```
 
-- comment hls profile from TranscodeTargets section
-- add new section to DirectPlayProfiles section:
 - restart PMS
 
 <VideoProfile protocol="hls" container="mpegts" codec="h264" audioCodec="aac,mp3" context="streaming" />
 
 # Logs
 
-- Linux:
+- Ubuntu:
 
 /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Logs/PMS\ Plugin\ Logs/com.plexapp.plugins.etvnet.log
 /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Logs/Plex\ Media\ Server.log
@@ -92,7 +144,7 @@ OSX:
 
 # Plugin Location
 
-- Linux:
+- Ubuntu:
 /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Plug-ins/Etvnet.bundle/
 
 - OSX:
@@ -101,7 +153,6 @@ OSX:
 # Inspired Projects
 
 * Alternative YouTube plugin - https://github.com/kolsys/YouTubeTV.bundle
-
 * ETVNET on XBMC - http://etvnet.com/xbmc
 
 # Articles
@@ -123,3 +174,4 @@ OSX:
 [plex-channels-dev-forum]: https://forums.plex.tv/categories/channel-development
 [plex-services]: https://github.com/plexinc-plugins/Services.bundle
 [plex-walkthrough]: https://forums.plex.tv/discussion/28084/plex-plugin-development-walkthrough
+
