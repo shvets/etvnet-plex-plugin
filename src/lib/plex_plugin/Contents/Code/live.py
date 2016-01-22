@@ -218,9 +218,13 @@ def add_schedule(oc, channel_id, default_time, list):
             key = Callback(archive.HandleChild,
                 id = media['media_id'],
                 name = media['name'],
+                thumb = 'thumb',
                 rating_key = rating,
                 description = media['description'],
+                duration = 0,
+                year = 0,
                 on_air = media['start_time'],
+                index = 0,
                 files = json.dumps(files)
             )
 

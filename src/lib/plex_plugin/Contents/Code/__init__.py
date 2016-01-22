@@ -1,6 +1,6 @@
 import common
-from plex_video_service import PlexVideoService
-from radio_service import RadioService
+import plex_video_service
+import radio_service
 
 ART = 'art-default.jpg'
 ICON = 'icon-default.png'
@@ -11,29 +11,25 @@ BACK_ICON = 'icon-back.png'
 ADD_ICON = 'icon-add.png'
 REMOVE_ICON = 'icon-remove.png'
 
-video_service = PlexVideoService()
-radio_service = RadioService()
+video_service = plex_video_service.PlexVideoService()
+radio_service = radio_service.RadioService()
 
 import live
 import archive
 import bookmarks
 import radio
 
-def Start(): # Initialize the plug-in
+def Start():
     Plugin.AddViewGroup("InfoList", viewMode="InfoList", mediaType="items")
     Plugin.AddViewGroup("List", viewMode="List", mediaType="items")
     Plugin.AddViewGroup('PanelStream', viewMode='PanelStream', mediaType='items')
     Plugin.AddViewGroup('MediaPreview', viewMode='MediaPreview', mediaType='items')
 
-    #ObjectContainer.title1 = 'Etvnet'
-    # ObjectContainer.view_group = 'List'
-    #ObjectContainer.art = R(ART)
-
     # DirectoryObject.thumb = R(ICON)
-    # DirectoryObject.art = R(ART)
+    DirectoryObject.art = R(ART)
 
     # VideoClipObject.thumb = R(ICON)
-    # VideoClipObject.art = R(ART)
+    VideoClipObject.art = R(ART)
 
     HTTP.CacheTime = CACHE_1HOUR
 
