@@ -81,7 +81,7 @@ def reload():
 
     print("Server was restarted.")
 
-    run("tail -f ~/Library/Logs/PMS\ Plugin\ Logs/com.plexapp.plugins." + plugin_name + ".log")
+    #run("tail -f ~/Library/Logs/PMS\ Plugin\ Logs/com.plexapp.plugins." + plugin_name + ".log")
 
 @task
 def deploy():
@@ -176,4 +176,11 @@ def rdeploy():
     unzip_remote(password)
     restart_remote(password)
     chown_remote(password)
+
+@task
+def plex_uninstall():
+    run("rm -rf ~/Library/Application Support/Plex Media Server/")
+    run("rm -rf ~/Library/Caches/PlexMediaServer/")
+    run("rm -rf ~/Library/Preferences/com.plexapp.plexmediaserver.plist")
+
 

@@ -4,6 +4,13 @@
 
 - Python 2.7.x
 - OSX or Ubuntu
+- Plex Media Server
+
+# Install PMS on Ubuntu
+
+```bash
+sudo dpkg -i /home/alex/Downloads/plexmediaserver_0.9.14.6.1620-e0b7243_amd64.deb
+```
 
 # Installing core tools
 
@@ -27,6 +34,7 @@ python --version
 ```bash
 easy_install pip
 pip install invoke
+pip install paramiko
 ```
 
 # Building and installing plugin
@@ -174,4 +182,3 @@ OSX:
 [plex-channels-dev-forum]: https://forums.plex.tv/categories/channel-development
 [plex-services]: https://github.com/plexinc-plugins/Services.bundle
 [plex-walkthrough]: https://forums.plex.tv/discussion/28084/plex-plugin-development-walkthrough
-

@@ -224,24 +224,42 @@ def build_metadata_object(media_type, name, year, index=None):
     if media_type == 'episode':
         video = EpisodeObject(show=name, index=int(index))
     elif media_type == 'movie':
-        video = MovieObject(title=name, year=int(year))
+        #video = MovieObject(title=name, year=int(year))
+        video = VideoClipObject(title=name, year=int(year))
     else:
-        video = VideoClipObject(title=name, year=int(year), index=index)
+        video = VideoClipObject(title=name, year=int(year))
 
     return video
 
 def MediaObjectsForURL(id, format, bitrates):
+    Log(Client.Product)
     media_objects = []
 
     for bitrate in sorted(json.loads(bitrates), reverse=True):
         media_object = MediaObject(
-            bitrate=bitrate,
+            protocol = Protocol.RTMP,
+            container=Container.MP4,
             optimized_for_streaming=True
         )
 
-        part_object = PartObject(key=Callback(PlayVideo, id=id, format=format, bitrate=str(bitrate)))
+        audio_stream = AudioStreamObject(
+            codec=AudioCodec.AAC,
+            channels=2,
+            bitrate=str(bitrate)
+        )
 
-        media_object.parts.append(part_object)
+        video_stream = VideoStreamObject(
+            codec=VideoCodec.H264
+        )
+
+        key = Callback(PlayVideo, id=id, format=format, bitrate=str(bitrate))
+
+        part_object = PartObject(
+            key = key,
+            streams = [audio_stream, video_stream]
+        )
+
+        media_object.parts = [part_object]
 
         media_objects.append(media_object)
 
@@ -255,10 +273,10 @@ def originally_available_at(on_air):
 def PlayVideo(id, bitrate, format, **params):
     response = video_service.get_url(media_id=id, format=format, bitrate=bitrate, other_server=common.other_server())
 
-    # Log(response['url'])
+    Log(response['url'])
 
     if not response['url']:
         common.no_contents()
     else:
-        return IndirectResponse(MovieObject, key=RTMPVideoURL(response['url']))
+        return IndirectResponse(MovieObject, key=response['url'])
 
