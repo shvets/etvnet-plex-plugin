@@ -130,8 +130,8 @@ def MediaObjectsForURL(channel_id, format, offset, bitrates):
         # else:
 
         media_object = MediaObject(
-            protocol='hls',
-            container='mpegts',
+            protocol = Protocol.HLS,
+            container = Container.MPEGTS,
             optimized_for_streaming=True
         )
 

@@ -232,12 +232,11 @@ def build_metadata_object(media_type, name, year, index=None):
     return video
 
 def MediaObjectsForURL(id, format, bitrates):
-    Log(Client.Product)
     media_objects = []
 
     for bitrate in sorted(json.loads(bitrates), reverse=True):
         media_object = MediaObject(
-            protocol = Protocol.RTMP,
+            protocol = Protocol.HLS,
             container=Container.MP4,
             optimized_for_streaming=True
         )
@@ -273,10 +272,10 @@ def originally_available_at(on_air):
 def PlayVideo(id, bitrate, format, **params):
     response = video_service.get_url(media_id=id, format=format, bitrate=bitrate, other_server=common.other_server())
 
-    Log(response['url'])
+    url = response['url']
 
-    if not response['url']:
+    if not url:
         common.no_contents()
     else:
-        return IndirectResponse(MovieObject, key=response['url'])
+        return IndirectResponse(MovieObject, key=HTTPLiveStreamURL(url))
 

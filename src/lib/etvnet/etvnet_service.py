@@ -67,7 +67,7 @@ class EtvnetService(ApiService):
 
         return response
 
-    def get_url(self, media_id, format='mp4', protocol=None, bitrate=None, other_server=None, offset=None,
+    def get_url(self, media_id, format='mp4', protocol='hls', bitrate=None, other_server=None, offset=None,
                 live=False, channel_id=None, preview=False):
         if format == 'zixi':
             format = 'mp4'

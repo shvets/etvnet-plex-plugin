@@ -124,11 +124,11 @@ class EtvnetServiceTest(unittest.TestCase):
         self.assertNotEqual(len(result['data']), 0)
 
     def test_get_url(self):
-        id = '943989' # 329678
+        id = '946671' # 329678
         bitrate = '1200'
         format = 'mp4'
 
-        url_data = self.service.get_url(id, bitrate=bitrate, format=format)
+        url_data = self.service.get_url(id, bitrate=bitrate, format=format, protocol='hls')
 
         print('Media Url: ' + url_data['url'])
 
@@ -157,7 +157,7 @@ class EtvnetServiceTest(unittest.TestCase):
 
         bitrate = bitrates[format][0]
 
-        url_data = self.service.get_url(media_object['id'], bitrate=bitrate, format=format)
+        url_data = self.service.get_url(media_object['id'], bitrate=bitrate, format=format, other_server=True)
 
         self.print_url_data(url_data, bitrates)
 
